@@ -1,11 +1,23 @@
-import './Intro.css'
+import './Intro.css';
 
-function Intro() {
+export default function Intro() {
   return (
-    <div>
-      <h4>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, autem? Id, maxime excepturi animi perferendis aut rem quos officiis possimus suscipit deleniti ad optio enim minima exercitationem repellendus tempore, unde nemo accusantium! Excepturi delectus harum iste mollitia animi suscipit incidunt eos inventore repudiandae fuga adipisci sint commodi ipsam quibusdam, vitae autem. Sequi a rerum, explicabo voluptatem sed beatae animi molestias! Repellat magni dolorum animi cum tempore provident, sit optio deleniti nesciunt velit tenetur nulla assumenda debitis repudiandae deserunt iure facere, necessitatibus exercitationem. Quis ab voluptatum, officia odio, corrupti iusto consequatur architecto debitis dicta velit aliquid illo vel ad rem possimus.</h4>
-    </div>
+    <section className="container-fluid intro-section">
+      <div className="row">
+        <div className="col-md-4 d-flex align-items-start justify-content-start">
+          <p className="intro-label">Introduction</p>
+        </div>
+        <div className="col-md-8 intro-content">
+          <h1 className="intro-text">
+            At <span className="fw-medium">Asteria</span>, we design and implement tailored solutions{' '}
+            <span className="highlight">to optimize manufacturing workflows</span>,
+            improve product quality, and reduce costs.
+          </h1>
+          <button className="btn intro-btn mt-4">
+            About Us <span className="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </section>
   );
 }
-
-export default Intro;

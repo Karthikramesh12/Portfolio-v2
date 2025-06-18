@@ -14,16 +14,16 @@
 /* Dark overlay for better text readability */
 
 .diamond-accent {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  position: fixed;
   width: 20px;
   height: 20px;
   background: #8a2be2;
   transform: translate(-50%, -50%) rotate(45deg);
-  z-index: 4;
-  animation: float 3s ease-in-out infinite;
+  z-index: 1000;
+  pointer-events: none;
 }
+
+
 
 @keyframes float {
   0%, 100% { transform: translate(-50%, -50%) rotate(45deg) translateY(0px); }
@@ -130,7 +130,35 @@
   margin-left: 8px;
   font-size: 1.2rem;
 }
+.arrow {
+  display: inline-block;
+  margin-left: 10px;
+  animation: none;
+}
 
+.hero-cta:hover .arrow {
+  animation: arrowFly 0.8s ease-in-out forwards;
+}
+
+/* Keyframes for fly-right then re-enter from left */
+@keyframes arrowFly {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  40% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  41% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 .bottom-left-info {
   position: absolute;
   bottom: 2rem;

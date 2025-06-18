@@ -148,3 +148,29 @@
 .off-link:hover{
     color: #524949;
 }
+/* Only animate the text inside the dashed line */
+@keyframes textRiseFromLine {
+  0% {
+    transform: translateY(80%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.offcanvas-animate .off-link strong {
+  display: inline-block;
+  transform: translateY(80%);
+  opacity: 0;
+  animation: textRiseFromLine 0.4s ease-out forwards;
+}
+
+/* Staggered delays */
+.offcanvas-animate .nav-item:nth-child(1) strong { animation-delay: 0.1s; }
+.offcanvas-animate .nav-item:nth-child(2) strong { animation-delay: 0.2s; }
+.offcanvas-animate .nav-item:nth-child(3) strong { animation-delay: 0.3s; }
+.offcanvas-animate .nav-item:nth-child(4) strong { animation-delay: 0.4s; }
+.offcanvas-animate .nav-item:nth-child(5) strong { animation-delay: 0.5s; }
+.offcanvas-animate .nav-item:nth-child(6) strong { animation-delay: 0.6s; }

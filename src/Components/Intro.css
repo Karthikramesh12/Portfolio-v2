@@ -1,0 +1,108 @@
+.intro-section {
+  padding: 100px 60px;
+  background-color: #fdfdfd;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.intro-label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #222;
+}
+
+.intro-content {
+  padding-left: 5rem;
+  width: 50%;
+  line-height: 1;
+  font-family: var(--font-style);
+  letter-spacing: -2.5px;
+}
+
+.intro-text {
+  font-size: 3rem;
+  line-height: 1.4;
+  font-weight: 400;
+  color: #888;
+  max-width: 950px;
+}
+
+.intro-text .highlight {
+  color: #0b0021;
+  font-weight: 600;
+}
+
+/* Main button styles (same as before) */
+.intro-btn {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  background-color: #0b0021;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border: none;
+  letter-spacing: -0.3px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  z-index: 0;
+}
+
+.intro-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: var(--third-color);
+  transition: width 0.4s ease;
+  z-index: -1;
+  border-radius: 50px;
+}
+
+.intro-btn:hover::before {
+  width: 100%;
+}
+
+.intro-btn:hover {
+  color: var(--dark-color) !important;
+  transform: translateY(-2px);
+}
+
+.intro-btn span {
+  position: relative;
+  z-index: 1;
+}
+
+/* ARROW animation setup */
+.arrow {
+  display: inline-block;
+  margin-left: 10px;
+  animation: none;
+}
+
+.intro-btn:hover .arrow {
+  animation: arrowFly 0.8s ease-in-out forwards;
+}
+
+/* Keyframes for fly-right then re-enter from left */
+@keyframes arrowFly {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  40% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  41% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+

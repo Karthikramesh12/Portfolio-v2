@@ -18,18 +18,24 @@ const Navbar = () => {
 
   useEffect(() => {
     const offcanvas = document.getElementById('offcanvasMenu');
-    offcanvas.addEventListener('show.bs.offcanvas', () => setIsMenuOpen(true));
-    offcanvas.addEventListener('hidden.bs.offcanvas', () => setIsMenuOpen(false));
+    if (!offcanvas) return;
+
+    const handleShow = () => setIsMenuOpen(true);
+    const handleHide = () => setIsMenuOpen(false);
+
+    offcanvas.addEventListener('show.bs.offcanvas', handleShow);
+    offcanvas.addEventListener('hidden.bs.offcanvas', handleHide);
+
+    return () => {
+      offcanvas.removeEventListener('show.bs.offcanvas', handleShow);
+      offcanvas.removeEventListener('hidden.bs.offcanvas', handleHide);
+    };
   }, []);
 
   // Scroll logic
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setShowNavbar(true);
-      } else {
-        setShowNavbar(false);
-      }
+      setShowNavbar(window.scrollY > 10);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -40,13 +46,11 @@ const Navbar = () => {
     <>
       <nav className={`navbar navbar-light bg-white custom-navbar ${showNavbar ? 'navbar-visible' : 'navbar-hidden'}`}>
         <div className="container-fluid d-flex justify-content-between align-items-center">
-          {/* Logo */}
           <a className="navbar-brand asteria-logo d-flex align-items-center gap-2" href="#">
             <img src={Logo} alt="Asteria Logo" className="logo-img" />
             <span className="navbar-heading">Asteria</span>
           </a>
 
-          {/* Hamburger Button */}
           <button
             className={`hamburger-btn ${isMenuOpen ? 'open' : ''}`}
             type="button"
@@ -61,12 +65,11 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Offcanvas Menu */}
       <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
         <div className="offcanvas-header" />
         <div className="offcanvas-body d-flex flex-column justify-content-between px-4 py-5" style={{ height: '100%' }}>
           {/* Navigation Links */}
-          <ul className="nav flex-column gap-3 fs-4">
+          <ul className={`nav flex-column gap-3 fs-4 ${isMenuOpen ? 'offcanvas-animate' : ''}`}>
             <li className="nav-item"><a className="nav-link off-link" href="#">01. <strong>Home</strong></a></li>
             <li className="nav-item"><a className="nav-link off-link" href="#">02. <strong>About</strong></a></li>
             <li className="nav-item"><a className="nav-link off-link" href="#">03. <strong>Solutions</strong></a></li>
