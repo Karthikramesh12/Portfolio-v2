@@ -1,0 +1,150 @@
+/* Custom styles for Asteria navbar */
+
+/* Navbar scroll-visibility */
+/* Navbar transitions */
+.custom-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1050;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Hidden by moving up */
+.navbar-hidden {
+  transform: translateY(-100%);
+}
+
+/* Visible at scroll */
+.navbar-visible {
+  transform: translateY(0);
+}
+
+
+/* Custom hamburger menu styling */
+.custom-toggler {
+  border: none;
+  padding: 4px 8px;
+  background: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.custom-toggler:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.custom-toggler-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 16px;
+}
+
+.custom-toggler-icon .line {
+  width: 100%;
+  height: 2px;
+  background-color: #1F2937;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+}
+
+.custom-toggler:hover .line {
+  background-color: #374151;
+}
+.custom-toggler-icon {
+  border: 1px dashed red; /* debug visibility */
+}
+
+.navbar-heading{
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: var(--font-style);
+}
+/* Custom Hamburger Button */
+/* --- Hamburger Button Styling --- */
+.hamburger-btn {
+  width: 70px;                 /* slightly longer */
+  height: 14px;                /* less height to reduce vertical spacing */
+  padding: 0;
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 1051; /* Stay above offcanvas */
+  position: relative;
+}
+
+/* Hamburger Lines */
+.hamburger-line {
+  height: 2px;
+  width: 100%;
+  background-color: #1F2937;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+}
+
+/* Open State — move bottom line up to overlap top line */
+.hamburger-btn.open .bottom-line {
+  transform: translateY(-10px);  /* closer for tighter overlap */
+}
+
+.logo-img{
+    height: 35px;
+    width: 35px;
+}
+
+/* Logo styling */
+.asteria-logo {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.asteria-logo svg {
+  display: block;
+}
+.custom-navbar {
+  min-height: 70px; /* adjust height as needed */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  align-items: center;
+}
+/* Give padding & height to offcanvas */
+.offcanvas.offcanvas-end {
+  background-color: #f7fbfd;
+  width: 630px;
+}
+.offcanvas-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* center vertically */
+  align-items: center;     /* center horizontally */
+  height: 100%;
+  padding: 0;
+}
+.off-link {
+  color: #111;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-bottom: 1px dashed #ccc;
+  padding-bottom: 0.3rem;
+}
+
+.off-link strong {
+  font-size: 2.667vw;
+  font-family: var(--font-style);
+  font-weight: 400;
+  margin-left: 0.4rem;
+  line-height: 1;
+}
+.off-link:hover{
+    color: #524949;
+}
