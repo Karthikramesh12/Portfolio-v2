@@ -1,0 +1,269 @@
+/* Custom Machinery Design Component Styles */
+
+/* Main Container */
+.machinery-container {
+  height: 85vh;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Left and Right Sections */
+.left-section {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: var(--secondary-light) !important;
+}
+
+.right-section {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+/* Logo Styles */
+.logo-container {
+  width: 60px;
+  height: 60px;
+}
+
+.logo-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Custom Button */
+.btn-custom-dark {
+  background-color: #2d1b69;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  font-size: 1rem;
+  align-items: center;
+}
+
+.btn-custom-dark:hover {
+  background-color: #1e1346;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(45, 27, 105, 0.3);
+}
+
+.btn-custom-dark:focus {
+  box-shadow: 0 0 0 0.2rem rgba(45, 27, 105, 0.25);
+}
+
+/* Right Section Purple Background */
+.purple-bg-section {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  height: 100%;
+  padding: 2rem;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/* Image Container */
+.image-container {
+  max-width: 500px;
+  width: 100%;
+  padding: 2rem;
+}
+
+.machinery-image {
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Typography */
+
+.project-heading{
+    font-family: var(--font-style);
+    letter-spacing: -.06em;
+    font-size: 2.133vw;
+    font-weight: 400;
+}
+
+.custom-project-desc{
+    font-family: var(--font-style);
+    line-height: 1.5;
+}
+
+.lead {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 991.98px) {
+  .machinery-container {
+    height: auto;
+    min-height: 70vh;
+  }
+  
+  .left-section {
+    border-radius: 20px 20px 0 0;
+  }
+  
+  .right-section {
+    border-radius: 0 0 20px 20px;
+  }
+  
+  .purple-bg-section {
+    min-height: 50vh;
+    padding: 1.5rem;
+    border-radius: 0 0 20px 20px;
+  }
+  
+  .display-4 {
+    font-size: 2.2rem;
+  }
+  
+  .image-container {
+    max-width: 400px;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .machinery-container {
+    height: auto;
+    min-height: 80vh;
+  }
+  
+  .display-4 {
+    font-size: 1.8rem;
+  }
+  
+  .lead {
+    font-size: 1rem;
+  }
+  
+  .purple-bg-section {
+    min-height: 40vh;
+  }
+  
+  .btn-custom-dark {
+    padding: 0.75rem 2rem !important;
+  }
+}
+
+/* Additional spacing utilities */
+.content-section {
+  max-width: 600px;
+}
+
+/* Smooth animations */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Focus states for accessibility */
+.btn-custom-dark:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+}
+/* Base Styles */
+.scroll-container {
+  position: relative;
+  width: 100%;
+}
+
+.sticky-viewport {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Columns */
+.left-column, .right-column {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.left-column {
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+}
+
+.right-column {
+  position: relative;
+}
+
+/* Content Containers */
+.left-content, .right-content {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Slides */
+.slide {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.image-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-slide img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+/* Active Slide Styles */
+.slide.active, .image-slide.active {
+  opacity: 1;
+}
+
+/* Logo and Content Styling */
+.logo-container {
+  margin-bottom: 2rem;
+}
+
+.logo-container img {
+  height: 60px;
+  width: auto;
+}
+
+/* Button Styling */
+.cta-button {
+  align-self: flex-start;
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 2px solid #333;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background: #333;
+  color: white;
+}
+
+.cta-button span {
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover span {
+  transform: translateX(4px);
+}
