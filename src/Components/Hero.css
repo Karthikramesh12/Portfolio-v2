@@ -9,6 +9,8 @@
   color: white;
   position: relative;
   overflow: hidden;
+  /* Smooth transition for background scale changes */
+  transition: background-size 0.1s ease-out;
 }
 
 /* Dark overlay for better text readability */
@@ -22,8 +24,6 @@
   z-index: 1000;
   pointer-events: none;
 }
-
-
 
 @keyframes float {
   0%, 100% { transform: translate(-50%, -50%) rotate(45deg) translateY(0px); }
@@ -118,18 +118,20 @@
   color: var(--dark-color) !important;
   transform: translateY(-2px);
 }
+
 .text:hover{
     color: var(--dark-color);
 }
+
 .hero-cta span {
   z-index: 1;
 }
-
 
 .arrow {
   margin-left: 8px;
   font-size: 1.2rem;
 }
+
 .arrow {
   display: inline-block;
   margin-left: 10px;
@@ -159,6 +161,7 @@
     opacity: 1;
   }
 }
+
 .bottom-left-info {
   position: absolute;
   bottom: 2rem;

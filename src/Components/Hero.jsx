@@ -1,8 +1,9 @@
+import React, { useEffect, useRef } from 'react';
 import './Hero.css';
-import { useEffect, useRef } from 'react';
 
 const HeroSection = () => {
   const diamondRef = useRef(null);
+  const heroSectionRef = useRef(null);
   const mouseX = useRef(window.innerWidth / 2);
   const mouseY = useRef(window.innerHeight / 2);
   const posX = useRef(window.innerWidth / 2);
@@ -12,6 +13,18 @@ const HeroSection = () => {
     const handleMouseMove = (e) => {
       mouseX.current = e.clientX;
       mouseY.current = e.clientY;
+    };
+
+    const handleScroll = () => {
+      if (heroSectionRef.current) {
+        const scrolled = window.pageYOffset;
+        const scrollProgress = Math.min(scrolled / window.innerHeight, 1);
+        
+        // Scale from 1 to 1.15 based on scroll progress
+        const scale = 1 + (scrollProgress * 0.85);
+        
+        heroSectionRef.current.style.backgroundSize = `${scale * 100}%`;
+      }
     };
 
     const animate = () => {
@@ -28,18 +41,20 @@ const HeroSection = () => {
     };
 
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', handleScroll);
     animate(); // start animation loop
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
-    <section className="hero-section">
+    <section className="hero-section" ref={heroSectionRef}>
       {/* Smooth-following diamond */}
       <div className="diamond-accent" ref={diamondRef}></div>
-
+      
       {/* Main content */}
       <div className="hero-container">
         <div className="hero-content-wrapper">

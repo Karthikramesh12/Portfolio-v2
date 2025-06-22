@@ -1,89 +1,139 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import Deepcept_AI from '../assets/Deepcept_AI.png';
+import Icon2 from '../assets/icon-2.svg';
+import Chess from '../assets/Chess.png';
+import Icon3 from '../assets/icon-3.svg';
+import Icon1 from '../assets/icon-1.svg';
+import WordPress from '../assets/WordPress_website.png';
+import Portfolio_karthik from '../assets/Karthik_portfolio.png';
+import Avani_Dvaras from '../assets/avani-dvara.png'
 import './Projects.css';
 
 const Projects = () => {
   const containerRef = useRef(null);
   const leftContentRef = useRef(null);
   const rightContentRef = useRef(null);
-  const [isScrolling, setIsScrolling] = useState(false);
 
-  const projectData = [
-    {
-      logo: "https://cdn.prod.website-files.com/67a6d23cd1f672ae9697c3f9/67ae40b881cddf62c6eb8617_triangle%20quad2.svg",
-      heading: "Custom Machinery Design",
-      description: "Innovative design and development of custom machinery, tailored to meet unique manufacturing needs.",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      logo: "https://cdn.prod.website-files.com/67a6d23cd1f672ae9697c3f9/67ae40b881cddf62c6eb8617_triangle%20quad2.svg",
-      heading: "Industrial Automation",
-      description: "Cutting-edge automation solutions that streamline production processes and increase efficiency across industries.",
-      image: "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      logo: "https://cdn.prod.website-files.com/67a6d23cd1f672ae9697c3f9/67ae40b881cddf62c6eb8617_triangle%20quad2.svg",
-      heading: "Precision Engineering",
-      description: "High-precision manufacturing solutions designed to meet the most demanding technical specifications and quality standards.",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      logo: "https://cdn.prod.website-files.com/67a6d23cd1f672ae9697c3f9/67ae40b881cddf62c6eb8617_triangle%20quad2.svg",
-      heading: "Smart Manufacturing",
-      description: "IoT-enabled manufacturing systems that provide real-time monitoring and intelligent process optimization.",
-      image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    }
-  ];
+const projectData = [
+  {
+    logo: Icon1,
+    heading: "Deepcept AI",
+    description: "Redesigned and redeveloped Deepcept AI's website to improve UI/UX, functionality, and engagement.",
+    image: Avani_Dvaras,
+    link: "https://deepcept.ai/"
+  },
+  {
+    logo: Icon2,
+    heading: "Chess Engine",
+    description: "Created a chess game with AI using vanilla JavaScript, with increasing difficulty based on AI response time.",
+    image: Portfolio_karthik,
+    link: "https://karthikramesh12.github.io/chess_game/"
+  },
+  {
+    logo: Icon3,
+    heading: "WordPress Medical Website",
+    description: "Developed a responsive WordPress-based medical website with engaging animations and user-friendly UI.",
+    image: WordPress,
+    link: "http://amazon-filpcart.42web.io/homepage/"
+  },
+  {
+    logo: Icon1,
+    heading: "Portfolio Website",
+    description: "A basic HTML/CSS/JS portfolio showcasing my personal projects, skills, and experience.",
+    image: Chess,
+    link: "https://karthikramesh12.github.io/Portfolio/"
+  },
+  {
+    logo: Icon2,
+    heading: "Avani Dvaras",
+    description: "Designed a clean and elegant website for an interior company using React and Vite, blending high-end aesthetics with minimalism.",
+    image: Deepcept_AI,
+    link: "https://avani-dvara-demo.netlify.app/" 
+  }
+];
 
-  useEffect(() => {
+
+  const updateContentPosition = () => {
     const container = containerRef.current;
     if (!container) return;
+    
+    const scrollY = window.scrollY;
+    const containerTop = container.offsetTop;
+    const containerHeight = container.offsetHeight;
+    const windowHeight = window.innerHeight;
+    
+    // Calculate scroll zone boundaries
+    const scrollZoneStart = containerTop;
+    const scrollZoneEnd = containerTop + containerHeight - windowHeight;
+    
+    // Check if we're in the scroll zone
+    if (scrollY >= scrollZoneStart && scrollY <= scrollZoneEnd) {
+      // Calculate progress through the scroll zone (0 to 1)
+      const scrollProgress = (scrollY - scrollZoneStart) / (scrollZoneEnd - scrollZoneStart);
+      const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
+      
+      // Calculate how many slides to move through
+      const totalSlides = projectData.length - 1;
+      const slideProgress = clampedProgress * totalSlides;
+      
+      // Calculate transforms - both use the same slideProgress value
+      const slideHeight = 100; // 100vh per slide to match container height
+      const transformAmount = slideProgress * slideHeight;
+      
+      // Apply transforms - left moves up, right moves down, same speed
+      if (leftContentRef.current) {
+        leftContentRef.current.style.transform = `translateY(-${transformAmount}vh)`;
+      }
+      
+      if (rightContentRef.current) {
+        // Right container starts at negative position, so we move it in the same direction as left
+        rightContentRef.current.style.transform = `translateY(${transformAmount}vh)`;
+      }
+      
+      console.log(`Scroll Progress: ${clampedProgress.toFixed(2)}, Transform: ${transformAmount.toFixed(2)}vh`);
+    } else if (scrollY < scrollZoneStart) {
+      // Before scroll zone - reset to first slide
+      if (leftContentRef.current) {
+        leftContentRef.current.style.transform = `translateY(0vh)`;
+      }
+      if (rightContentRef.current) {
+        rightContentRef.current.style.transform = `translateY(0vh)`;
+      }
+    } else {
+      // After scroll zone - stay at last slide
+      const maxTransform = (projectData.length - 1) * 100;
+      if (leftContentRef.current) {
+        leftContentRef.current.style.transform = `translateY(-${maxTransform}vh)`;
+      }
+      if (rightContentRef.current) {
+        rightContentRef.current.style.transform = `translateY(${maxTransform}vh)`;
+      }
+    }
+  };
 
+  useEffect(() => {
     let rafId = null;
-
-    const updateScroll = () => {
-  const scrollY = window.scrollY;
-  const containerTop = container.offsetTop;
-  const containerHeight = container.offsetHeight;
-  const visibleHeight = containerHeight;
-
-  const start = containerTop;
-  const end = containerTop + containerHeight - visibleHeight;
-
-  if (scrollY >= start && scrollY <= end) {
-    const progress = (scrollY - start) / (end - start);
-    const slideProgress = progress * (projectData.length - 1);
-    const translateY = slideProgress * 85; // use vh, not px
-
-    if (leftContentRef.current) {
-      leftContentRef.current.style.transform = `translateY(-${translateY}vh)`;
-    }
-    if (rightContentRef.current) {
-      rightContentRef.current.style.transform = `translateY(${translateY}vh)`;
-    }
-
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = 'auto';
-    if (scrollY < start) {
-      if (leftContentRef.current) leftContentRef.current.style.transform = `translateY(0vh)`;
-      if (rightContentRef.current) rightContentRef.current.style.transform = `translateY(0vh)`;
-    }
-  }
-};
 
     const handleScroll = () => {
       if (rafId === null) {
-        rafId = requestAnimationFrame(updateScroll);
+        rafId = requestAnimationFrame(() => {
+          updateContentPosition();
+          rafId = null;
+        });
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    updateScroll();
+    // Initial position update
+    updateContentPosition();
+
+    // Add scroll listener with passive flag for better performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (rafId) cancelAnimationFrame(rafId);
-      document.body.style.overflow = 'auto';
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
     };
   }, [projectData.length]);
 
@@ -91,45 +141,46 @@ const Projects = () => {
     <div
       ref={containerRef}
       className="container p-0"
-      style={{ height: `${projectData.length * 85}vh` }}
+      style={{ height: `${projectData.length * 100}vh` }}
     >
-      <div className="row g-0 machinery-container" style={{ position: 'sticky', top: 0, height: '85vh' }}>
+      <div className="row g-0 machinery-container" style={{ position: 'sticky', top: 0, height: '100vh' }}>
         {/* Left Section */}
         <div className="col-lg-6 d-flex align-items-center bg-light left-section" style={{ overflow: 'hidden' }}>
           <div
             ref={leftContentRef}
             className="container-fluid"
             style={{
-              height: `${projectData.length * 85}vh`,
+              height: `${projectData.length * 100}vh`,
               display: 'flex',
               flexDirection: 'column',
-              transition: isScrolling ? 'none' : 'transform 0.3s ease',
               willChange: 'transform',
               position: 'relative'
             }}
           >
             {projectData.map((project, index) => (
-              <div key={index} className="row p-4 mt-4 mb-5" style={{
-                height: '85vh',
-                minHeight: '85vh',
+              <div key={index} className="d-flex align-items-center justify-content-center" style={{
+                height: '100vh',
+                minHeight: '100vh',
                 flexShrink: 0,
-                display: 'flex',
-                alignItems: 'center'
+                padding: '0 2rem'
               }}>
-                <div className="col-12">
-                  <div className="logo-container mb-5">
+                <div className="w-100">
+                  <div className="logo-container mb-4">
                     <img src={project.logo} alt="Company Logo" className="logo-svg" />
                   </div>
                   <div className="content-section">
                     <h1 className="display-4 project-heading text-dark mb-4">
                       {project.heading}
                     </h1>
-                    <p className="lead text-muted custom-project-desc mb-5" style={{ maxWidth: '500px' }}>
+                    <p className="lead text-muted custom-project-desc mb-4" style={{ maxWidth: '500px' }}>
                       {project.description}
                     </p>
-                    <button className="btn intro-btn">
-                      Learn More <span className="arrow">→</span>
-                    </button>
+                    <a href={project.link} target="_blank" rel="noopener noreferrer">
+  <button className="btn intro-btn">
+    Learn More <span className="arrow">→</span>
+  </button>
+</a>
+
                   </div>
                 </div>
               </div>
@@ -139,21 +190,37 @@ const Projects = () => {
 
         {/* Right Section */}
         <div className="col-lg-6 position-relative right-section" style={{ overflow: 'hidden' }}>
+          {/* Static background container */}
+          <div className="purple-bg-section d-flex align-items-center justify-content-center" style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100vh',
+            zIndex: 1
+          }}>
+            {/* Background */}
+          </div>
+          
+          {/* Moving images container */}
           <div
             ref={rightContentRef}
             style={{
-              height: `${projectData.length * 85}vh`,
+              height: `${projectData.length * 100}vh`,
               display: 'flex',
               flexDirection: 'column',
-              transition: isScrolling ? 'none' : 'transform 0.3s ease',
               willChange: 'transform',
-              position: 'relative'
+              position: 'absolute',
+              top: `-${(projectData.length - 1) * 100}vh`, // Start positioned to show first image
+              left: 0,
+              width: '100%',
+              zIndex: 2
             }}
           >
             {projectData.map((project, index) => (
-              <div key={index} className="purple-bg-section d-flex align-items-center justify-content-center" style={{
-                height: '85vh',
-                minHeight: '85vh',
+              <div key={index} className="d-flex align-items-center justify-content-center" style={{
+                height: '100vh',
+                minHeight: '100vh',
                 flexShrink: 0
               }}>
                 <div className="image-container">
