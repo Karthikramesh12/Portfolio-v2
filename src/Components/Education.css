@@ -1,0 +1,362 @@
+/* Education Section */
+.education-section {
+  background-color: var(--second-color);
+  min-height: 100vh;
+  padding: 0;
+  position: relative;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+.education-heading{
+    font-family: var(--font-style) !important;
+    letter-spacing: -.05em;
+    font-weight: 400;
+    color: var(--first-color);
+    margin-top: 200px;
+    max-width: 40%;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.process-wrapper {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Rotating Circles - Using Bootstrap positioning */
+.circles-container {
+  width: 550px; /* Increased from 400px */
+  height: 550px; /* Increased from 400px */
+  transition: transform 0.1s ease-out;
+  z-index: 1;
+  /* Initial transform will be set by JavaScript */
+}
+
+.outer-circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2.5px dotted #7c4dff;
+  border-radius: 70%;
+  opacity: 0.7;
+}
+
+.inner-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px; /* Increased from 280px */
+  height: 400px; /* Increased from 280px */
+  transform: translate(-50%, -50%);
+  border: 2px dotted #7c4dff;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* Center Content */
+.center-content {
+  z-index: 10;
+}
+
+.center-content h2 {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Process Items Container */
+.process-items-container {
+  pointer-events: none; /* Allow interactions with center elements */
+  z-index: 5;
+}
+
+/* Process Items - Corner positioned */
+.process-item {
+  color: #ffffff;
+  pointer-events: auto;
+  max-width: 300px;
+}
+
+.corner-item {
+  position: absolute;
+}
+
+/* Corner positioning */
+.top-left {
+  top: 40px;
+  left: 40px;
+}
+
+.top-right {
+  top: 40px;
+  right: 40px;
+}
+
+.bottom-left {
+  bottom: 40px;
+  left: 40px;
+}
+
+.bottom-right {
+  bottom: 40px;
+  right: 40px;
+}
+
+/* Step Headers */
+.step-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.diamond {
+  color: #7c4dff;
+  font-size: 10px;
+  margin-right: 12px;
+  transform: rotate(-90deg) !important;
+  display: inline-block;
+}
+
+.step-num {
+  color: var(--first-color);
+  font-size: 1.3rem;
+  font-weight: 300;
+  font-family: var(--font-style);
+  letter-spacing: 0.3px;
+}
+
+/* Step Titles */
+.step-title {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0 0 15px 0;
+  line-height: 1;
+}
+
+/* Step Descriptions */
+.step-desc {
+  color: var(--first-color);
+  font-size: 1.2rem;
+  line-height: 1.2;
+  margin: 0;
+  font-weight: 300;
+}
+
+/* Connection Dots - Positioned on circumference */
+.connection-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #7c4dff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(124, 77, 255, 0.6);
+}
+
+.dot-top {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dot-right {
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+.dot-bottom {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.dot-left {
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .circles-container {
+    width: 450px; /* Increased from 350px */
+    height: 450px; /* Increased from 350px */
+  }
+  
+  .inner-circle {
+    width: 320px; /* Increased from 250px */
+    height: 320px; /* Increased from 250px */
+  }
+  .step-title {
+    font-size: 24px;
+  }
+  
+  .top-left, .top-right {
+    top: 30px;
+  }
+
+  
+  .top-right, .bottom-right {
+    right: 30px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .circles-container {
+    width: 420px; /* Increased from 320px */
+    height: 420px; /* Increased from 320px */
+  }
+  
+  .inner-circle {
+    width: 300px; /* Increased from 230px */
+    height: 300px; /* Increased from 230px */
+  }
+  
+  .process-item {
+    max-width: 220px;
+  }
+  
+  .step-title {
+    font-size: 22px;
+  }
+  
+  .step-desc {
+    font-size: 13px;
+  }
+  
+  .top-left, .top-right {
+    top: 20px;
+  }
+  
+  .bottom-left, .bottom-right {
+    bottom: 20px;
+  }
+  
+  .top-left, .bottom-left {
+    left: 20px;
+  }
+  
+  .top-right, .bottom-right {
+    right: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .education-section {
+    padding: 40px 15px;
+    min-height: auto;
+  }
+  
+  .process-wrapper {
+    height: auto;
+    padding: 40px 0;
+    flex-direction: column;
+  }
+  
+  /* Override corner positioning for mobile */
+  .process-items-container {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    margin-top: 50px;
+  }
+  
+  .corner-item {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    max-width: 100% !important;
+    margin: 0 auto 40px auto;
+    text-align: center;
+  }
+  
+  /* Override circle positioning for mobile */
+  .circles-container {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 350px; /* Increased from 280px */
+    height: 350px; /* Increased from 280px */
+    margin: 0 auto;
+  }
+  
+  .inner-circle {
+    width: 250px; /* Increased from 200px */
+    height: 250px; /* Increased from 200px */
+  }
+  
+  .center-content {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin-bottom: 50px;
+  }
+  
+  .step-title {
+    font-size: 24px;
+  }
+  
+  .connection-dot {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .education-section {
+    padding: 30px 15px;
+  }
+  
+  .step-title {
+    font-size: 22px;
+  }
+  
+  .step-desc {
+    font-size: 13px;
+  }
+  
+  .circles-container {
+    width: 320px; /* Increased from 250px */
+    height: 320px; /* Increased from 250px */
+    margin-bottom: 40px;
+  }
+  
+  .inner-circle {
+    width: 230px; /* Increased from 180px */
+    height: 230px; /* Increased from 180px */
+  }
+  
+  .center-content h2 {
+    font-size: 20px;
+  }
+  
+  .process-item {
+    margin-bottom: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .process-item {
+    width: 100%;
+    padding: 0 10px;
+  }
+  
+  .step-title {
+    font-size: 20px;
+  }
+  
+  .circles-container {
+    width: 280px; /* Increased from 220px */
+    height: 280px; /* Increased from 220px */
+  }
+  
+  .inner-circle {
+    width: 200px; /* Increased from 160px */
+    height: 200px; /* Increased from 160px */
+  }
+}

@@ -89,8 +89,7 @@ const projectData = [
         // Right container starts at negative position, so we move it in the same direction as left
         rightContentRef.current.style.transform = `translateY(${transformAmount}vh)`;
       }
-      
-      console.log(`Scroll Progress: ${clampedProgress.toFixed(2)}, Transform: ${transformAmount.toFixed(2)}vh`);
+    
     } else if (scrollY < scrollZoneStart) {
       // Before scroll zone - reset to first slide
       if (leftContentRef.current) {
