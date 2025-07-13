@@ -186,7 +186,8 @@
 }
 
 .hero-btn-secondary:hover .arrow {
-  transform: translateX(4px);
+  rotate: -4deg;
+  transition: all ease 0.5s;
 }
 
 /* Responsive Design */
