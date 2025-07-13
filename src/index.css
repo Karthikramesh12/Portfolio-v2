@@ -1,14 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
-:root{
-  --first-color: #fff;
-  --secondary-light: #f0f4f7;
-  --second-color: #1a0f3a;
-  --third-color: #7d3bf4; 
-  --dark-color: #000;
-  --font-style: Archivo, sans-serif;
+:root {
+    --main-font: Dmsans, Arial, sans-serif;
+    --color--black-color: #000206;
+    --color--white: white;
+    --2: -.02em;
+    --color--gray-color: #8799a8;
+    --_responsive---margin--margin-80-px: 80px;
+    --color--primary-color: #69edfe;
+    --color--stroke-black: #181818;
+    --color--fill-black: #0b0b0b;
+    --color--fill-color-2: #0a0c10;
+    --_responsive---margin--margin-70-px: 70px;
+    --_responsive---margin--margin-40-px: 40px;
+    --100: 100%;
+    --_responsive---border-radius--border-radius-8-px: 8px;
+    --_responsive---padding--padding-100-px: 100px;
+    --_responsive---margin--margin-100-px: 100px;
+    --_responsive---margin--margin-200-px: 200px;
+    --_responsive---margin--margin-50-px: 50px;
+    --_responsive---margin--margin-60-px: 60px;
+    --_responsive---margin--margin-30-px: 30px;
+    --_responsive---border-radius--border-radius-16-px: 16px;
+    --_responsive---padding--padding-40-px: 40px;
+    --_responsive---border-radius--border-radius-30-px: 30px;
+    --_responsive---border-radius--border-radius-10-px: 10px;
+    --_responsive---padding--padding-24-px: 24px;
+    --_responsive---border-radius--border-radius-40-px: 40px;
+    --_responsive---margin--margin-120-px: 120px;
+    --_responsive---padding--padding-42-px: 42px;
+    --_responsive---border-radius--border-radius-46-px: 46px;
+    --_responsive---padding--padding-30-px: 30px;
+    --_responsive---border-radius--border-radius-20-px: 20px;
+    --_responsive---margin--margin-90-px: 90px;
 }
-
 body{
-  font-family: Archivo, sans-serif;
+  font-family: var(--main-font);
 }
