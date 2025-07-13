@@ -1,176 +1,501 @@
-/* Custom styles for Asteria navbar */
-
-/* Navbar scroll-visibility */
-/* Navbar transitions */
+/* Custom navbar styles */
 .custom-navbar {
+  background-color: transparent !important;
+  padding: 0.5rem 0;
+  position: relative;
+  z-index: 1000;
+}
+
+/* Brand/Logo styling */
+.navbar-brand {
+  color: var(--color--white) !important;
+  font-family: var(--main-font);
+  font-weight: 600;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.navbar-logo {
+  width: 100%;
+  height: 32px;
+  border-radius: var(--_responsive---border-radius--border-radius-8-px);
+}
+
+.brand-text {
+  color: var(--color--white);
+}
+
+/* Navigation items container */
+.nav-items-container {
+  background-color: var(--color--fill-black);
+  border-radius: var(--_responsive---border-radius--border-radius-30-px);
+  padding: 0.5rem 1rem;
+  gap: 0.5rem;
+}
+
+/* Individual nav items */
+.nav-item-custom {
+  color: var(--color--white);
+  font-family: Dmsans, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.nav-item-custom:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color--primary-color) !important;
+  border-color: var(--color--stroke-black);
+}
+
+.nav-item-custom.active {
+  background-color: var(--color--primary-color);
+  color: var(--color--black-color) !important;
+}
+
+/* Cart icon styling */
+.cart-icon {
+  color: var(--color--white) !important;
+  font-size: 1.2rem;
+  padding: 0.5rem !important;
+  border-radius: var(--_responsive---border-radius--border-radius-8-px);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+}
+
+.cart-icon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color--primary-color) !important;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: var(--color--primary-color);
+  color: var(--color--black-color);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 50%;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Base Styles for Both Buttons */
+.hero-btn-primary,
+.hero-btn-secondary {
+  font-family: var(--font-style);
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 25px;
+  padding: 0.875rem 2rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  min-width: 160px;
+  height: 50px;
+}
+
+/* Primary Button (Get Started) */
+.hero-btn-primary {
+  background: var(--btn-primary-gradient);
+  border: none;
+  box-shadow: 0 4px 20px rgba(122, 120, 231, 0.3);
+}
+
+.hero-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(122, 120, 231, 0.4);
+}
+
+/* Secondary Button (See our videos) */
+.hero-btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.hero-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Text Layers */
+.hero-btn-primary .btn-text,
+.hero-btn-secondary .btn-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: inherit;
+  font-weight: inherit;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 2;
+}
+
+/* Normal (initial) text */
+.hero-btn-primary .btn-text.current,
+.hero-btn-secondary .btn-text.current {
+  color: white;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Hover (slide-up) text */
+.hero-btn-primary .btn-text.hover,
+.hero-btn-secondary .btn-text.hover {
+  color: black;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+/* Animate text on hover */
+.hero-btn-primary:hover .btn-text.current,
+.hero-btn-secondary:hover .btn-text.current {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.hero-btn-primary:hover .btn-text.hover,
+.hero-btn-secondary:hover .btn-text.hover {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Expanding Blue Background */
+.hero-btn-primary::after,
+.hero-btn-secondary::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: var(--color--primary-color) !important; /* Light blue */
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease-in-out, height 0.6s ease-in-out;
+  z-index: 1;
+}
+
+.hero-btn-primary:hover::after,
+.hero-btn-secondary:hover::after {
+  width: 300%;
+  height: 300%;
+}
+
+/* Base Button Styles */
+.hero-btn-secondary {
+  font-family: var(--font-style);
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 25px;
+  padding: 0.875rem 2rem 0.875rem 1.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  min-width: 200px;
+  height: 50px;
+  background: white;
+  border: none;
+  z-index: 1;
+}
+
+/* Expanding Blue Background */
+.hero-btn-secondary::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: var(--color--primary-color);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease-in-out, height 0.6s ease-in-out;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Animate fill on hover */
+.hero-btn-secondary:hover::after {
+  width: 300%;
+  height: 300%;
+}
+
+/* Text Slide Wrapper */
+.hero-btn-secondary .btn-layer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2; /* above background */
+}
+
+/* Text Layers */
+.hero-btn-secondary .btn-text {
+  position: relative; /* not absolute! */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: inherit;
+  font-weight: inherit;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  z-index: 3;
+  justify-content: flex-start;
+}
+
+/* Current (black) text */
+.hero-btn-secondary .btn-text.current {
+  color: var(--color--black-color);
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Hover (white) text */
+.hero-btn-secondary .btn-text.hover {
+  color: var(--color--fill-black);
+  transform: translateY(100%);
+  opacity: 0;
+  position: absolute; /* only hover needs to be absolute */
+  top: 0;
+  left: 0;
+}
+
+/* Animate on hover */
+.hero-btn-secondary:hover .btn-text.current {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.hero-btn-secondary:hover .btn-text.hover {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Arrow Circle */
+.arrow-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: black;
+  border-radius: 50%;
+  margin-left: 1rem;
+  flex-shrink: 0;
+  z-index: 3;
+  transition: background-color 0.3s ease;
+}
+
+/* Arrow */
+.arrow {
+  color: white;
+  font-size: 1rem;
+  transform: rotate(0deg);
+  transition: transform 0.4s ease;
+}
+
+/* Rotate on hover */
+.hero-btn-secondary:hover .arrow {
+  transform: rotate(-40deg);
+}
+
+.custom-border {
+  gap: 54px;
+  border: 1px solid var(--color--stroke-black) !important;
+  background-color: var(--color--fill-black);
+  border-radius: 40px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  display: flex;
+}
+
+/* Mobile Fullscreen Menu */
+.mobile-menu {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  z-index: 1050;
-  transition: transform 0.4s ease-in-out;
-}
-
-/* Hidden by moving up */
-.navbar-hidden {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color--fill-black);
+  z-index: 9999;
   transform: translateY(-100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  visibility: hidden;
 }
 
-/* Visible at scroll */
-.navbar-visible {
+.mobile-menu.active {
   transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
 }
 
-
-/* Custom hamburger menu styling */
-.custom-toggler {
-  border: none;
-  padding: 4px 8px;
-  background: none;
-  outline: none;
-  box-shadow: none;
-}
-
-.custom-toggler:focus {
-  box-shadow: none;
-  outline: none;
-}
-
-.custom-toggler-icon {
+.mobile-menu-content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 24px;
-  height: 16px;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 2rem;
 }
 
-.custom-toggler-icon .line {
-  width: 100%;
-  height: 2px;
-  background-color: #1F2937;
-  border-radius: 1px;
-  transition: all 0.3s ease;
-}
-
-.custom-toggler:hover .line {
-  background-color: #374151;
-}
-.custom-toggler-icon {
-  border: 1px dashed red; /* debug visibility */
-}
-
-.navbar-heading{
-    font-size: 1.5rem;
-    font-weight: 400;
-    font-family: var(--font-style);
-}
-/* Custom Hamburger Button */
-/* --- Hamburger Button Styling --- */
-.hamburger-btn {
-  width: 70px;                 /* slightly longer */
-  height: 14px;                /* less height to reduce vertical spacing */
+.mobile-nav-items {
+  list-style: none;
   padding: 0;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.mobile-nav-item {
+  margin: 1.5rem 0;
+}
+
+.mobile-nav-link {
+  color: var(--color--white);
+  font-family: Dmsans, Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 150%;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: block;
+  padding: 1rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+.mobile-nav-link:hover {
+  color: var(--color--primary-color) !important;
+  border-bottom-color: var(--color--primary-color);
+  transform: translateY(-2px);
+}
+
+/* Navbar toggler customization */
+.navbar-toggler {
   border: none;
+  padding: 0.5rem;
+  z-index: 10000;
+  position: relative;
   background: transparent;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* Custom Hamburger Icon */
+.hamburger-icon {
+  width: 24px;
+  height: 18px;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
-  z-index: 1051; /* Stay above offcanvas */
-  position: relative;
 }
 
-/* Hamburger Lines */
-.hamburger-line {
-  height: 2px;
-  width: 100%;
-  background-color: #1F2937;
-  border-radius: 1px;
-  transition: all 0.3s ease;
-}
-
-/* Open State — move bottom line up to overlap top line */
-.hamburger-btn.open .bottom-line {
-  transform: translateY(-10px);  /* closer for tighter overlap */
-}
-
-.logo-img{
-    height: 35px;
-    width: 35px;
-}
-
-/* Logo styling */
-.asteria-logo {
-  margin-bottom: 0;
-  padding: 0;
-}
-
-.asteria-logo svg {
+.hamburger-icon span {
   display: block;
-}
-.custom-navbar {
-  min-height: 70px; /* adjust height as needed */
-  padding-top: 10px;
-  padding-bottom: 10px;
-  align-items: center;
-}
-/* Give padding & height to offcanvas */
-.offcanvas.offcanvas-end {
-  background-color: #f7fbfd;
-  width: 630px;
-}
-.offcanvas-body {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* center vertically */
-  align-items: center;     /* center horizontally */
-  height: 100%;
-  padding: 0;
-}
-.off-link {
-  color: #111;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  border-bottom: 1px dashed #ccc;
-  padding-bottom: 0.3rem;
+  height: 2px;
+  background-color: var(--color--white);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
 }
 
-.off-link strong {
-  font-size: 2.667vw;
-  font-family: var(--font-style);
-  font-weight: 400;
-  margin-left: 0.4rem;
-  line-height: 1;
-}
-.off-link:hover{
-    color: #524949;
-}
-/* Only animate the text inside the dashed line */
-@keyframes textRiseFromLine {
-  0% {
-    transform: translateY(80%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0%);
-    opacity: 1;
-  }
+.hamburger-icon span:nth-child(1) {
+  transform: translateY(0);
 }
 
-.offcanvas-animate .off-link strong {
-  display: inline-block;
-  transform: translateY(80%);
+.hamburger-icon span:nth-child(2) {
+  opacity: 1;
+}
+
+.hamburger-icon span:nth-child(3) {
+  transform: translateY(0);
+}
+
+/* Hamburger to X animation */
+.hamburger-icon.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-icon.active span:nth-child(2) {
   opacity: 0;
-  animation: textRiseFromLine 0.4s ease-out forwards;
 }
 
-/* Staggered delays */
-.offcanvas-animate .nav-item:nth-child(1) strong { animation-delay: 0.1s; }
-.offcanvas-animate .nav-item:nth-child(2) strong { animation-delay: 0.2s; }
-.offcanvas-animate .nav-item:nth-child(3) strong { animation-delay: 0.3s; }
-.offcanvas-animate .nav-item:nth-child(4) strong { animation-delay: 0.4s; }
-.offcanvas-animate .nav-item:nth-child(5) strong { animation-delay: 0.5s; }
-.offcanvas-animate .nav-item:nth-child(6) strong { animation-delay: 0.6s; }
+.hamburger-icon.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Mobile responsiveness */
+@media (max-width: 991.98px) {
+  .nav-items-container {
+    display: none;
+  }
+  
+  .custom-border {
+    display: none;
+  }
+  
+  /* Hide desktop navigation completely on mobile */
+  .navbar-collapse {
+    display: none !important;
+  }
+  
+  /* Show mobile menu button on smaller screens */
+  .navbar-toggler {
+    display: block;
+  }
+  
+  /* Ensure mobile menu covers navbar */
+  .mobile-menu {
+    padding-top: 80px; /* Account for navbar height */
+  }
+}
+
+/* Desktop styles - ensure mobile menu is hidden */
+@media (min-width: 992px) {
+  .navbar-toggler {
+    display: none;
+  }
+  
+  .mobile-menu {
+    display: none;
+  }
+}
